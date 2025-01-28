@@ -73,10 +73,15 @@ GENOLOADER summarize variants in vcf files taking two ingroup populations (or on
 
 **Why allowing for missing data in the ingroups while summarizing genotype counts to estimate genetic load is not a good idea?**  
 
-Then, we will set the way GENOLOADER is polarizing ancestral/derived alleles (`-r`).The options are:  
+Then, we will set the way GENOLOADER is polarizing ancestral/derived alleles (`-r`).   
+The options are:  
+
 POP_OUT: use the outgroup allele as ancestral  
+
 POP1: use the major allele in population 1 as ancestral  
+
 POP2: use the major allele in population 2 as ancestral  
+
 POP1POP2: use the major allele in a joint population 1&2 sample as ancestral  
 
 Finally, we need to tell GENOLOADER to counts the genotypes only using the sites we believe are best polarized given the option used for polarization (`-pol`).  The options are:
@@ -88,9 +93,9 @@ We will now do some tests on a sample of different penguin individuals. In the f
 
 Check these files.
 
-**How many individuals per populations do we have?**  
+**How many individuals per populations do you see?**  
 
-**How many variants are in the vcf?**  
+**How many variants are in total in the vcf?**  
 
 Here is the command line to run GENOLOADER using the outgroup population to polarize ancestral/derived alleles:
 
@@ -100,13 +105,13 @@ Here is the command line to run GENOLOADER using the outgroup population to pola
 
 **How many variants have been repolarized?**  
 
-Now check the output: gt file, counts file and plots.
+Now check the output files: gt file, counts file and plots.
 
 **How many HIGH impact variants can you see in the gt file? And how many MODIFIER ones?**  
 
 **Which of the two penguins has the higher masked load and realized load**  
 
-We will discuss the output more altogether.
+We will discuss the results further during the final wrap-up.
 
 Now change the command line above to run GENOLOADER again but:
 
@@ -115,25 +120,50 @@ Now change the command line above to run GENOLOADER again but:
 2) using major allele in POP2 as ancestral;
 
 3) using major allele in both POP1 and POP2 as ancestral.
+ 
 
 **Compare the output plots and get ready for discussion altogether**
+
 
 **How polarization is impacting our estimates of masked and realized load?**
 
 
+We will discuss the results further during the final wrap-up.
+
+
 ### EXTRA 2: More fish quiz to test for purging of deleterious variants
 
-#Describe the case study and the material provided
+We are back to the same invasive fish populations as in the previous activity (ROH estimates). We sampled three populations from the invasive range as well as one population from the source range. If you have completed the previous activity, you should have seen the effect of the invasion bottleneck on the genetic diversity in terms of ROHs. Let's now check what happened those variants with medium-high deleteriousness.
 
-#Polarize on the reference source population and follow the fate of segregating variants during a range expansion
+For more fun, we shuffled the labels of the populations, so that you do not know which one is the source range. But we already ran the polarization using the major allele in the source population as ancestral. Our aim here is to track segregating sites during the highetened drift experienced during the invasion and the following range expasion.
 
-#Count the genotypes per individual and plot per population.
+Our main questions are:
 
-#Normalize the counts of Homo_der and make a plot of normalized increase of homozygosity along an expansion route
+**What is the fate of medium or high segregating variants during a range expansion?**
 
+**Are we able to detect different trajectories which we can identify as puryfing selection relaxation or, on the contrary, with purging?**
 
+First run the counting and plotting steps of the modified GENOLOADER script, called GENOLOADER_countsPlots, using the file `fish.complete.gt` and
+assigning the popA to popD to the pop1 to pop4 options in the script
 
+```
+./GENOLOADER_countsPlots -f fish.gt -p1 PopA -p2 PopB -p3 PopC -p4 PopD -pol in1Fold
+```
 
+**Which one is the source population?**  
 
+**Can you say what is the likely direction of the expansion?**  
 
+**How are the homozygous genotypes counts for the MD or HI changing along the expansion?**
 
+Try to run the following script to plot individual HOMO_DER counts normalized by the average counts in the source population.
+
+```
+./normCountsPlotting.py -f fish.counts -ref {choose one among A, B, C, D}
+```
+
+**What is this plot showing**  
+
+**Is there any signal of purging?**
+
+We will discuss the results further during the final wrap-up.
