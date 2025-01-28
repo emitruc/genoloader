@@ -1,5 +1,7 @@
 # GENOLOADER
 
+This tutorial is for the Genomic Load activity at the **Workshop on Population and Speciation Genomics 2025**
+
 First, log into your AWS instance and move to the folder activity `~/workshop_material/30_genetic_load_genotypes_counts`
 
 You'll need to execute some scripts in the bash terminal and then visualize pdf files, either via guacamole or downloading the files with `scp`
