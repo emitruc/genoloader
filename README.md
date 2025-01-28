@@ -206,7 +206,7 @@ Try to run the following script to plot individual HOMO_DER counts normalized by
 ./normCountsPlotting.py -f fish.counts -ref {choose one among A, B, C, D}
 ```
 
-**What is this plot showing**  
+**What is this plot showing?**  
 
 **Is there any signal of purging?**
 
