@@ -14,9 +14,9 @@ Rarely we have accurate estimates of the fitness effects of the segregating vari
 
 So our first question is:  
 
-**What are the selection coefficients of all the variant positions in the target individuals/populations?**  
+**What are the selection coefficients of the variants in our target individuals/populations?**  
 
-**How can get a good guess of the selection coefficient for the variants in our genomic dataset?**  
+**How can we get a good guess of the selection coefficient for the variants in our genomic dataset?**  
 
 If any direct estimate of fitness effects is not feasible, we need to resort to model-based predictions. 
 
@@ -37,27 +37,71 @@ In this tutorial we will focus on the first approach using SNPEff to categorize 
 
 **How do you think the genome assembly and annotation will impact your prediction of the fitness effects of the target variants?**  
 
-
-
 ## SNPEff variants annotation
 
-We can actually skip SNPEff actual annotation in this tutorial but you can see how it works below and check the output (the summary, an annotated vcf file)
+We can actually skip SNPEff actual annotation in this tutorial but you can see how it works below and check an annotated vcf file in the `~/workshop_material/30_genetic_load_genotypes_counts/penguins` directory
 
 ### EXTRA 1: Running SNPEff and check the outputs
 
 To annotate your genetic variants with SNPEff you a database for the species of interest. SNPEff database gets frequently updated so you are likely to find your species of interest. Otherwise, you can build your own database with a reference genome, an annotation of the genes, and, likely, a protein dataset. See below an example of this step:
 
-##FRANCESCO/SEBA help me with this
+>>>>>>>>>>>>>>>>>>>
+Move to the snpEff folder:
+
+cd ~/path/to/snpEff/
+
+Create a folder called data inside the snpEff folder:
+mkdir data
+
+Move inside the data folder:
+cd data/
+
+Create a folder called "genomes" inside your data folder:
+mkdir genomes
+
+Create a folder called as your species' scientific name (e.g. Pterois miles) inside the data folder:
+mkdir Pterois miles
+
+Now copy your species' reference genome to the "genomes" folder and call the file as your species' scientific name (e.g. Pterois_miles.fa):
+cp ~/path/to/your/reference/Pterois_miles.fa ./genomes/
+
+Now copy your species' genome annotation file into the folder called as your species' scientific name (e.g. Pterois_miles) with the following command:
+cp ~/path/to/your/reference/genes.gff ./Pterois_miles/
+
+Call the annotation file "genes.gff":
+mv ./Pterois_miles/Annotation.gff ./Pterois_miles/genes.gff
+
+Now move back to the snpEff main folder: 
+cd ../
+
+And edit the file "snpEff.config" adding the following entries
+"Pterois_miles.genome : Pterois_miles"
+"Pterois_miles.reference : Pterois_miles"
+with the following command:
+awk '1; END { print "Pterois_miles.genome : Pterois_miles" }' snpEff.config > temp && mv temp snpEff.config
+awk '1; END { print "Pterois_miles.reference : Pterois_miles" }' snpEff.config > temp && mv temp snpEff.config
+
+Now run the following command to build the dataset
+
+java -Xmx4g -jar ~/path/to/snpEff/snpEff.jar build -gff3 -noCheckCds -noCheckProtein -v Pterois_miles
 
 Then, you can annotate the variants in your vcf file using SNPEff and the genomic database for your species of interest using a command line like this one 
 
-#Annotating the vcf files
+java -Xmx4g -jar ~/path/to/snpEff/snpEff.jar -v Pterois_miles YOUR_VCF_FILE.vcf > ~/path/to/outputfolder/Annotated.vcf
 
-#Check what SNPEff added to your vcf. Understand the info added (Refer to this page: https://pcingola.github.io/SnpEff/snpeff/inputoutput/) 
-
-#Question: ask something about the annotation like Why there could be more than one annotation?
 
 ## Summarizing genotype counts per variant effect categories
+
+Before starting and as we skipped the actual annotation with SNPEff, answer the following questions to get acquainted with SNPEff annotated files.  
+
+If you have not done it yet, move to this directory:  
+`~/workshop_material/30_genetic_load_genotypes_counts/penguins`
+
+Check SNPEff annotation details at this [page](https://pcingola.github.io/SnpEff/snpeff/inputoutput/) 
+
+**What is the predicted effect of the variant at position 3978434 of the `penguins_scaf1.vcf`? Why it is predicted to be so deleterious**  
+
+**Why there could be more than one annotation?**
 
 After getting SNPEff fitness effect predictions, we will parse the annotated vcf to summarize fitness impact, individual genotypes, type of variant, missing data, allele frequency per population, etc. MORE IMPORTANTLY: we need to correctly identify ancestral and derived allele at each of the segregating sites. You should have seen before the slides about polarization of ancestral-derived alleles.
 
