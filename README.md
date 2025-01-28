@@ -1,5 +1,9 @@
 # GENOLOADER
 
+First, log into your AWS instance and move to the folder activity `~/workshop_material/30_genetic_load_genotypes_counts`
+
+You'll need to execute some scripts in the bash terminal and then visualize pdf files, either via guacamole or downloading the files with `scp`
+
 ## HOW TO ESTIMATE GENETIC LOAD IN INDIVIDUALS AND POPULATIONS FROM GENOMIC DATA
 
 Genetic load is estimated by summing up the fitness deficit caused by all deleterious alleles present in the genome of an individual.
@@ -31,7 +35,7 @@ In this tutorial we will focus on the first approach using SNPEff to categorize 
 
 **How do you think the genome assembly and annotation will impact your prediction of the fitness effects of the target variants?**  
 
-**What can you do to improve your estimates?**  
+
 
 ## SNPEff variants annotation
 
@@ -49,7 +53,7 @@ Then, you can annotate the variants in your vcf file using SNPEff and the genomi
 
 #Check what SNPEff added to your vcf. Understand the info added (Refer to this page: https://pcingola.github.io/SnpEff/snpeff/inputoutput/) 
 
-#?#Question: ask something about the annotation like Why there could be more than one annotation? ADD HERE
+#Question: ask something about the annotation like Why there could be more than one annotation?
 
 ## Summarizing genotype counts per variant effect categories
 
@@ -102,17 +106,18 @@ Now check the output: gt file, counts file and plots.
 
 We will discuss the output more altogether.
 
-Now change the command line to run again GENOLOADER:
+Now change the command line above to run GENOLOADER again but:
 
 1) using major allele in POP1 as ancestral;
    
-2)  using major allele in POP2 as ancestral;
+2) using major allele in POP2 as ancestral;
 
 3) using major allele in both POP1 and POP2 as ancestral.
 
 **Compare the output plots and get ready for discussion altogether**
 
 **How polarization is impacting our estimates of masked and realized load?**
+
 
 ### EXTRA 2: More fish quiz to test for purging of deleterious variants
 
