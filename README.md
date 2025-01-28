@@ -57,25 +57,62 @@ After getting SNPEff fitness effect predictions, we will parse the annotated vcf
 
 We have put together a little python script called GENOLOADER that we can use to polarize ancestral derived alleles while parsing the vcf, summarizing the counts of the different genotypes per categories of SNPeff fitness impact, and making a plot.
 
-#How to run it - explain the command line
+Run the following command to see the options available to run GENOLOADER:
 
-#Run using major allele in POP1 as ancestral
+```
+./GENOLOADER -h
+```
 
-#Example command line
+GENOLOADER summarize variants in vcf files taking two ingroup populations (or one target population and one close outgroup) and one more distant outgroup population. We need to set the minimum number of individuals per population. In this example, we will actually set no missing data in the ingroup populations and require at least three individuals in the outgroup population.
 
-#Check output: gt file, counts file and plots
+**Why allowing for missing data in the ingroups while summarizing genotype counts to estimate genetic load is not a good idea?**  
 
-#Some Questions on those outputs
+Then, we will set the way GENOLOADER is polarizing ancestral/derived alleles (`-r`).The options are:  
+POP_OUT: use the outgroup allele as ancestral  
+POP1: use the major allele in population 1 as ancestral  
+POP2: use the major allele in population 2 as ancestral  
+POP1POP2: use the major allele in a joint population 1&2 sample as ancestral  
 
-#Reason on what do we want to assess: realized load and masked load
+Finally, we need to tell GENOLOADER to counts the genotypes only using the sites we believe are best polarized given the option used for polarization (`-pol`).  The options are:
+unfolded, in1Fold, in2Fold, unfoldOutMiss
 
-#Run using major allele in POP2 as ancestral
+Refer to the slides on polarization that we saw before to decide which one of these options is the best given the polarization method.
 
-#Run using major allele in both POP1 and POP2 as ancestral
+We will now do some tests on a sample of different penguin individuals. In the folder XXX, there is a vcf file called XXX, and three text files called pop1 (Emperor penguin), pop2 (King penguin), pop_out (Adelie + Gentoo penguin).
 
-#Run using the outgroup allele as ancestral
+Check these files.
 
-#Questions on the differences appearing when using different ancestral/derived polirazion!!
+**How many individuals per populations do we have?**  
+
+**How many variants are in the vcf?**  
+
+Here is the command line to run GENOLOADER using the outgroup population to polarize ancestral/derived alleles:
+
+```
+./GENOLOADER -p1 pop1 -p2 pop2 -p0 pop_out -f penguins_scaf1.vcf -m1 24 -m2 24 -m0 3 -r POP_OUT -pol unfolded
+```
+
+**How many variants have been repolarized?**  
+
+Now check the output: gt file, counts file and plots.
+
+**How many HIGH impact variants can you see in the gt file? And how many MODIFIER ones?**  
+
+**Which of the two penguins has the higher masked load and realized load**  
+
+We will discuss the output more altogether.
+
+Now change the command line to run again GENOLOADER:
+
+1) using major allele in POP1 as ancestral;
+   
+2)  using major allele in POP2 as ancestral;
+
+3) using major allele in both POP1 and POP2 as ancestral.
+
+**Compare the output plots and get ready for discussion altogether**
+
+**How polarization is impacting our estimates of masked and realized load?**
 
 ### EXTRA 2: More fish quiz to test for purging of deleterious variants
 
