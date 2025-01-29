@@ -4,6 +4,12 @@ This tutorial is for the Genomic Load activity at the **Workshop on Population a
 
 First, log into your AWS instance and move to the folder activity `~/workshop_material/30_genetic_load/genotype_counts`
 
+Activate the conda environment
+
+```
+conda activate evomics_ml_workshop
+```
+
 You'll need to execute some scripts in the bash terminal and then visualize pdf files, either via guacamole or downloading the files with `scp`
 
 ## HOW TO ESTIMATE GENETIC LOAD IN INDIVIDUALS AND POPULATIONS FROM GENOMIC DATA
