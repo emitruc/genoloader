@@ -2,7 +2,7 @@
 
 This tutorial is for the Genomic Load activity at the **Workshop on Population and Speciation Genomics 2025**
 
-First, log into your AWS instance and move to the folder activity `~/workshop_material/30_genetic_load/genotype_counts`
+First, log into your AWS instance and move to the folder activity `~/workshop_materials/30_genetic_load/genotype_counts`
 
 Activate the conda environment
 
