@@ -84,7 +84,7 @@ As we skipped the actual annotation with SNPEff, answer the following questions 
 
 If you have not done it yet, move to the directory for this part of the activity:  
 
-`~/workshop_material/30_genetic_load/genotypes_counts/penguins`
+`~/workshop_materials/30_genetic_load/genotypes_counts/penguins`
 
 Check SNPEff annotation details at this [page](https://pcingola.github.io/SnpEff/snpeff/inputoutput/) 
 
@@ -144,20 +144,29 @@ Now check the output files: a file with the same name as the vcf but with the .g
 
 **Which one between the Emperor and the King penguins has the higher masked load and realized load**  
 
-We will discuss the results further during the final wrap-up.
+We will discuss the results further during the final wrap-up.  
 
-Now change the command line above to run GENOLOADER again but:
 
-1) using major allele in POP1 as ancestral;
+The step above will take about 15 minutes on the AWS instance. Launch it, then open another terminal and navigate to the same folder `/home/wpsg/workshop_materials/30_genetic_load/genotype_counts/penguins`.  
+
+Here make a subset of 100000 lines of the `penguins_scaf1.vcf` with this command:  
+```
+head -n 100000 penguins_scaf1.vcf > test.vcf
+```
+
+First, re-run the command line above with this reduced vcf to make it faster.  
+Then, change the command line above to run GENOLOADER again with the same test.vcf file but:
+
+1) use major allele in POP1 as ancestral;
    
-2) using major allele in POP2 as ancestral;
+2) use major allele in POP2 as ancestral;
 
-3) using major allele in both POP1 and POP2 as ancestral.
+3) use major allele in both POP1 and POP2 as ancestral.
 
 Make sure you pair each of this option with the right polarization flag.
 
 
-**Compare the output plots and get ready for discussion altogether**
+**Compare the output plots (full vcf vs. reduced vcf, and among different polarization options) and get ready for discussion altogether**
 
 **How polarization is impacting our estimates of masked and realized load?**
 
