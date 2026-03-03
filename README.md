@@ -1,4 +1,4 @@
-# GiNOLOADER
+# GENOLOADER
 
 This tutorial is for the Genomic Load activity at the **Workshop on Population and Speciation Genomics 2025**
 
