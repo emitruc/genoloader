@@ -181,7 +181,8 @@ The `polX` parameter controls how the ancestral allele is determined at each loc
 
 Every locus in the output is assigned a diagnostic flag describing the allelic configuration used to determine the ancestral allele. These flags are written to the `flag` column of the `.gt` output file and allow full traceability of polarization decisions.
 
-![Polarization flags based on data configuration in target and outgroup samples]()
+![Polarization flags based on data configuration in target and outgroup samples](/images
+/GiNOLOADER_polarisation.pdf)
 
 | Flag | Description |
 |------|-------------|
