@@ -89,7 +89,7 @@ Run the script
 ./genoloader sample.ann.vcf --p1 pop1.txt --p2 pop2.txt --p0 outgroup.txt \
              --m1 5 --m2 5 --m0 2 --polX POP_OUT --low_cov YES
 ```
-
+> **Disclaimer:** While the content of the c++ script has not been checked, its output (gt file) was identical with the gt file produced by the Python script on a 2,296,974-variant input vcf as checked with bash sha256sum. 
 ---
 
 ## Input files
