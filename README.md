@@ -6,7 +6,7 @@ Given a Freebayes- or GATK-generated VCF annotated with functional effects (e.g.
 
 Alongside the Python package provided as a Jupyter Lab/Notebook, **GenoLoader** main function (write_gt in the Python package) is also provided as an AI-translated c++ scritp. While the Pyhton code allows for easier understanding of the script, implementation within existing pipelines and customization, the c++ version provides the exact same features with a 10X faster execution speed. The latter is recommended for processing very large files.
 
-Genetic load estimates and plotting options are provided as ![additional functions](counting_plotting_functions.md) in the Python package only as they do not require long execution time.
+Genetic load estimates and plotting options are provided as [additional functions](counting_plotting_functions.md) in the Python package only as they do not require long execution time.
 
 ---
 
