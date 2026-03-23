@@ -268,10 +268,9 @@ This approach emulates pseudo-haploid genotype calling, a standard strategy for 
 ---
 
 ## Example
+After loading the functions in your Jupyter Lab notebook:
 
 ```python
-from GiNOLOADER_v3_2 import write_gt
-
 # Outgroup-based polarization with missingness filter and low-coverage resampling
 write_gt(
     vcf_file = 'population_data.ann.vcf',
