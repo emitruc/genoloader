@@ -4,8 +4,8 @@
 
 Given a Freebayes- or GATK-generated VCF annotated with functional effects (e.g. via [SnpEff](https://pcingola.github.io/SnpEff/)), GenoLoader polarizes each SNP as ancestral or derived and recodes individual genotypes as derived-allele dosage values (0, 1, 2). It supports multiple polarization strategies — outgroup-based, major allele in one or multiple populations — and implements a read-resampling approach for low-coverage (i.e. ancient) DNA samples. All samples present in the VCF are converted regardless of their population assignment.
 
-Alongside the python package provided as a Jupyter Lab/Notebook, **GenoLoader** is also provided as an AI-translated c++ scritp.
-While the Pyhton code allows for easier understanding of the script, implementation within existing pipelines and customization, the c++ version provides the exact same features with a 10X faster execution speed. The latter is recommended for processing of very large files.
+Alongside the Python package provided as a Jupyter Lab/Notebook, **GenoLoader** is also provided as an AI-translated c++ scritp.
+While the Pyhton code allows for easier understanding of the script, implementation within existing pipelines and customization, the c++ version provides the exact same features with a 10X faster execution speed. The latter is recommended for processing very large files.
 
 ---
 
