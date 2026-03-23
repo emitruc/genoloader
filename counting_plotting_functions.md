@@ -1,6 +1,6 @@
 # GenoLoader — Counting and plotting functions
 
-This script provides three functions for summarizing and visualizing genetic load from `.gt` files produced by the GenoLoader `write_gt` function. These functions compute per-individual derived allele counts stratified by SnpEff functional effect category, generate strip-plot figures, and estimate the Rxy statistic for comparing mutational load between population pairs.
+This script ```GENOLOADER_counting_plotting_functions.ipynb``` is a Python Jupyter Notebook which contains three functions for summarizing and visualizing genetic load from `.gt` files produced by the GenoLoader `write_gt` function. These functions compute per-individual derived allele counts stratified by SnpEff functional effect category, generate strip-plot figures, and estimate the Rxy statistic for comparing mutational load between population pairs.
 
 ---
 
