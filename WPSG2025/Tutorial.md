@@ -1,6 +1,8 @@
-# GENOLOADER
+The material archived in this folder **is not** for usage with current software. It is based on a very old version of Genoloader which is not provided in the repo. **Ask me** if you really want to do it.
 
-This tutorial is for the Genomic Load activity at the **Workshop on Population and Speciation Genomics 2025**
+# GENOLOADER.v1
+
+This tutorial is for the Genomic Load activity at the **Workshop on Population and Speciation Genomics 2025**. 
 
 First, log into your AWS instance and move to the folder activity `~/workshop_materials/30_genetic_load/genotype_counts`
 
