@@ -74,7 +74,7 @@ No compilation or package installation is required. The script ```GenoLoader.v3.
 In the bash terminal, compile the cpp file using g++:
 
 ```bash
-g++ -O2 -std=c++17 -o genoloader genoloader.cpp
+g++ -O2 -std=c++17 -o genoloader GenoLoader.v3.2.cpp
 ```
 
 Change permissions:
