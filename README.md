@@ -180,37 +180,42 @@ The `polX` parameter controls how the ancestral allele is determined at each loc
 
 ## Polarization flags
 
-Every locus in the output is assigned a diagnostic flag describing the allelic configuration used to determine the ancestral allele. These flags are written to the `flag` column of the `.gt` output file and allow full traceability of polarization decisions.
+Every locus in the output is assigned a diagnostic flag describing the allelic configuration used to determine the ancestral allele. These flags are written to the `flag` column of the `.gt` output file and allow full traceability of polarization decisions. The figure below shows the allelic configurations (with or without missing data) behind each flag. 
 
 
 ![Polarization flags based on data configuration in target and outgroup samples](images/genoloaderPolarization.png)
 
-| Flag | Description |
-|------|-------------|
-| `reference` | No repolarization; VCF reference allele used as ancestral (`polX='REF'`) |
-| `allFix` | All groups (outgroup and ingroups) monomorphic for the same allele |
-| `allMiss` | All alleles missing across all groups; locus assigned missing |
-| `inMiss` | Both ingroup populations missing; ancestral allele inferred from outgroup modal allele |
-| `InvarOutMiss` | Outgroup missing; both ingroups monomorphic for the same allele |
-| `altFix` | Outgroup missing; Pop1 and Pop2 fixed for different alleles; Pop1 allele used (conservative) |
-| `in1FoldAnc` | Outgroup and Pop2 missing; Pop1 monomorphic; Pop1 allele used as ancestral |
-| `in1FoldSeg` | Outgroup and Pop2 missing; Pop1 polymorphic; major Pop1 allele used |
-| `in2FoldAnc` | Outgroup and Pop1 missing; Pop2 monomorphic; Pop2 allele used as ancestral |
-| `in2FoldSeg` | Outgroup and Pop1 missing; Pop2 polymorphic; major Pop2 allele used |
-| `unfoldFix1outMiss` | Outgroup missing; Pop1 monomorphic, Pop2 polymorphic; Pop1 allele used |
-| `unfoldFix2outMiss` | Outgroup missing; Pop2 monomorphic, Pop1 polymorphic; Pop2 allele used |
-| `inFold` | Outgroup missing; both ingroups polymorphic; major ingroup allele used (folded fallback) |
-| `unfolded2Miss1` | Outgroup monomorphic; Pop1 missing, Pop2 present; outgroup allele used |
-| `unfolded1Miss2` | Outgroup monomorphic; Pop2 missing, Pop1 present; outgroup allele used |
-| `unfoldedAltFix` | Outgroup monomorphic; both ingroups monomorphic for different alleles |
-| `unfoldedILS` | Outgroup monomorphic; both ingroups polymorphic (possible incomplete lineage sorting) |
-| `unfoldedFixAnc1` | Outgroup monomorphic; Pop1 fixed for ancestral allele, Pop2 polymorphic |
-| `unfoldedFixDer1` | Outgroup monomorphic; Pop1 fixed for derived allele, Pop2 polymorphic |
-| `unfoldedFixAnc2` | Outgroup monomorphic; Pop2 fixed for ancestral allele, Pop1 polymorphic |
-| `unfoldedFixDer2` | Outgroup monomorphic; Pop2 fixed for derived allele, Pop1 polymorphic |
-| `InFixAnc` | Outgroup polymorphic; ingroups monomorphic; ingroup allele used (conservative) |
-| `allFold` | Both outgroup and ingroups polymorphic; modal allele across all samples used (folded fallback) |
-| `triall` | Non-biallelic locus detected; all genotypes set to missing |
+| Flag | Description | Ref allele |
+|------|-------------|------------|
+| Flags used when the outgroup is monomorphic and its allele can be assumed to be the ancestral |||
+| `unfoldedFixAnc1` | Outgroup monomorphic; Pop1 fixed for ancestral allele, Pop2 polymorphic | POP_OUT |
+| `unfoldedFixDer1` | Outgroup monomorphic; Pop1 fixed for derived allele, Pop2 polymorphic | POP_OUT |
+| `unfoldedFixAnc2` | Outgroup monomorphic; Pop2 fixed for ancestral allele, Pop1 polymorphic | POP_OUT |
+| `unfoldedFixDer2` | Outgroup monomorphic; Pop2 fixed for derived allele, Pop1 polymorphic | POP_OUT |
+| `unfoldedAltFix` | Outgroup monomorphic; both ingroups monomorphic for different alleles | POP_OUT |
+| `unfoldedILS` | Outgroup monomorphic; both ingroups polymorphic (possible incomplete lineage sorting) | POP_OUT |
+| `unfolded2Miss1` | Outgroup monomorphic; Pop1 missing, Pop2 polymorphic | POP_OUT |
+| `unfolded1Miss2` | Outgroup monomorphic; Pop2 missing, Pop1 polymorphic | POP_OUT |
+| Flags used when the outgroup is missing - mostly polarized as major/minor (unfoldFix- are exceptions) |||
+| `inFoldOutMiss` | Outgroup missing; both ingroups polymorphic; folded fallback | Major across ingroups |
+| `InvarOutMiss` | Outgroup missing; both ingroups monomorphic for the same allele | POP1 |
+| `altFix` | Outgroup missing; Pop1 and Pop2 fixed for different alleles; Pop1 allele used (conservative) | POP1 |
+| `in1FoldSeg` | Outgroup and Pop2 missing; Pop1 polymorphic | Major in POP1 |
+| `in2FoldSeg` | Outgroup and Pop1 missing; Pop2 polymorphic | Major in POP2 |
+| `unfoldFix1outMiss` | Outgroup missing; Pop1 monomorphic, Pop2 polymorphic | POP1 |
+| `unfoldFix2outMiss` | Outgroup missing; Pop2 monomorphic, Pop1 polymorphic | POP2 |
+| Flags used when PolX is set to "POP1"/"POP2" |||
+| `in1FoldAnc` | Pop1 is monomorphic and forced as ancestral by PolX='POP1' | POP1 |
+| `in2FoldAnc` | Pop2 is monomorphic and forced as ancestral by PolX='POP2' | POP2 |
+| Flags used when polarization is not really possible or not focused on ingroups |||
+| `allFix` | All groups (outgroup and ingroups) monomorphic for the same allele | POP1 |
+| `InFixAnc` | Outgroup polymorphic; ingroups monomorphic; ingroup allele used (conservative) | POP1 |
+| `inMiss` | Both ingroup populations missing; ancestral allele inferred from outgroup modal allele | Major in POP_OUT |
+| `allFold` | Both outgroup and ingroups polymorphic; modal allele across all samples used (folded fallback) | Major across all pops |
+| `triall` | Non-biallelic locus detected; all genotypes set to missing | 9 |
+| `allMiss` | All alleles missing across all groups; locus assigned missing | 9 | 
+| Flags used when re-polarization is not done |||
+| `reference` | No repolarization; VCF reference allele used as ancestral (`polX='REF'`) | AS IN INPUT |
 
 ---
 
