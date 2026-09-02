@@ -9,6 +9,14 @@ Alongside the Python package, entirely written by human and provided as a Jupyte
 Genetic load estimates and plotting options are provided as [additional functions](counting_plotting_functions.md) in the Python package only as they do not require long execution time.
 
 ---
+## Citation
+
+If you use GenoLoader in your research, please cite this github page.
+
+The low-coverage resampling module was developed for the analyses of the ancient Megaloceros data presented in:
+> [Sinding MS, Gargano M, Li Z et al 2026](https://doi.org/10.64898/2026.05.13.724764). Evolutionary history and genomic vulnerability of the extinct giant deer Megaloceros giganteus, biorXiv, DOI:10.64898/2026.05.13.724764.
+
+---
 
 ## Table of Contents
 
@@ -303,8 +311,3 @@ Upon completion, the script reports the number of loci passing missingness filte
 
 ---
 
-## Citation
-
-If you use GenoLoader in your research, please cite:
-
-> [Trucchi], [2026]. Genoloader: a Python package for derived allele polarization and genetic load estimation for high and low-coverage data. [Journal, DOI — to be updated upon publication]
