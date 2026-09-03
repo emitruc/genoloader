@@ -238,9 +238,9 @@ A tab-delimited file written for every run. Each row corresponds to one annotate
 | `scaffold` | Scaffold or chromosome identifier (from VCF CHROM field) |
 | `position` | Genomic position (from VCF POS field) |
 | `effect` | Predicted fitness effect from SnpEff (e.g. `HIGH`) |
-| `vartype` | Simplified variant category: `missense`, `synonymous`, `intergenic`, `intron`, `downstream`, `upstream`, or `else` |
+| `vartype` | Simplified variant category: `missense`, `synonymous`, `intergenic`, `intron`, or `else` |
 | `flag` | Polarization flag (see [Polarization flags](#polarization-flags)) |
-| `ref` | Inferred ancestral allele (VCF REF allele if not repolarized; VCF ALT allele if repolarized) |
+| `ref` | Inferred ancestral allele |
 | `<sample_1>` ... `<sample_N>` | Derived-allele dosage per individual: `0` (homozygous ancestral), `1` (heterozygous), `2` (homozygous derived), `nan` (missing) |
 
 > The `ref` column always reflects the **inferred ancestral allele**, regardless of what is listed as REF in the original VCF. If the ancestral allele was the VCF ALT allele, all genotypes at that locus are inverted and the ALT allele is written to `ref`.
